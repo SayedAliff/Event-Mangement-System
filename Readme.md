@@ -11,13 +11,13 @@ production-style environments....
 
 ## 🚀 Features
 
--   👤 **Member Management** (Add, List, Delete)\
--   🗓️ **Event Creation & Management**\
--   📝 **Smart Registration System** (capacity + duplicate protection)\
--   🔐 **Admin Panel** with login authentication\
--   💰 **Event Revenue Report**\
--   📜 **System-wide Audit Log**\
--   💾 **Persistent JSONL Storage**\
+-   👤 **Member Management** (Add, List, Delete)
+-   🗓️ **Event Creation & Management**
+-   📝 **Smart Registration System** (capacity + duplicate protection)
+-   🔐 **Admin Panel** with login authentication
+-   💰 **Event Revenue Report**
+-   📜 **System-wide Audit Log**
+-   💾 **Persistent JSONL Storage**
 -   ⚙️ **FastAPI Server + Console Client Architecture**
 
 ------------------------------------------------------------------------
@@ -25,11 +25,11 @@ production-style environments....
 ## 🛠️ Technologies Used
 
 -   **Python 3.12+**
--   **Backend:** FastAPI\
--   **Server:** Uvicorn\
--   **Client:** Python Requests\
--   **Validation:** Pydantic\
--   **Storage:** JSONL File Database\
+-   **Backend:** FastAPI
+-   **Server:** Uvicorn
+-   **Client:** Python Requests
+-   **Validation:** Pydantic
+-   **Storage:** JSONL File Database
 -   **Version Control:** Git & GitHub
 
 ------------------------------------------------------------------------
@@ -103,7 +103,7 @@ Download: https://git-scm.com/download/win
 ### 2️⃣ Clone the Repository
 
 ``` bash
-git clone https://github.com/your-username/event-management-system.git
+git clone https://github.com/SayedAliff/Event-Mangement-System
 cd event-management-system
 ```
 
@@ -126,7 +126,7 @@ brew install git
 ### 2️⃣ Clone the Repository
 
 ``` bash
-git clone https://github.com/your-username/event-management-system.git
+git clone https://github.com/SayedAliff/Event-Mangement-System
 cd event-management-system
 ```
 
@@ -208,33 +208,35 @@ python3 client/client.py
 
 ### 👤 Member Management
 
--   Add Member\
--   List Members\
+-   Add Member
+-   List Members
+-   Update Member
 -   Delete Members
 
 ### 🗓️ Event Management
 
--   Create Event (fee + capacity)\
+-   Create Event (fee + capacity)
+-   Update Event
 -   Prevent duplicate event IDs
 
 ### 📝 Registration
 
--   Register Member\
--   Auto-check capacity\
+-   Register Member
+-   Auto-check capacity
 -   Prevent duplicate entry
 
 ### 🔐 Admin Panel
 
--   Login: admin / 123\
--   View Revenue\
+-   Login: Username: admin | password: 123
+-   View Revenue
 -   View Audit Log
 
 ------------------------------------------------------------------------
 
 # 🤝 Contributing
 
-1.  Fork\
-2.  Create Branch\
-3.  Commit\
-4.  Push\
+1.  Fork
+2.  Create Branch
+3.  Commit
+4.  Push
 5.  Pull Request

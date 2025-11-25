@@ -18,14 +18,15 @@ def menu():
             try:
                 res = requests.get(URL + "/")
                 for m in res.json():
-                    print(f"ID: {m['id']}, Name: {m['name']}, Level: {m['level']}")
+                    # Display Phone instead of Level
+                    print(f"ID: {m['id']}, Name: {m['name']}, Phone: {m['phone']}")
             except: print("Connection Error")
                 
         elif c == '2':
             data = {
                 "id": input("Member ID: "),
                 "name": input("Name: "),
-                "level": input("Level (Basic/Gold): ")
+                "phone": input("Phone Number: ") # Input changed to Phone
             }
             try:
                 res = requests.post(URL + "/", json=data)
@@ -38,7 +39,7 @@ def menu():
             data = {
                 "id": mid,
                 "name": input("New Name: "),
-                "level": input("New Level (Basic/Gold): ")
+                "phone": input("New Phone Number: ") # Input changed to Phone
             }
             try:
                 res = requests.put(f"{URL}/{mid}", json=data)

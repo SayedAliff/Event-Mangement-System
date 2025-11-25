@@ -1,13 +1,13 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from .storage import read_data, write_data, log_audit
+from .storage import read_data, write_data, log_audit, update_entity
 
 app = FastAPI()
 
 class Member(BaseModel):
     id: str
     name: str
-    level: str
+    phone: str
 
 @app.get("/")
 def get_members():
@@ -25,23 +25,15 @@ def add_member(m: Member):
 
 @app.put("/{mid}")
 def update_member(mid: str, m: Member):
-    members = read_data("members")
-    found = False
-    for i, member in enumerate(members):
-        if member['id'] == mid:
-            # Update while keeping the ID same (or allow update if payload has same ID)
-            if m.id != mid:
-                 raise HTTPException(status_code=400, detail="ID mismatch in body and URL")
-            members[i] = m.model_dump()
-            found = True
-            break
+
+    if m.id != mid:
+        raise HTTPException(status_code=400, detail="ID mismatch in body and URL")
+
+
+    if update_entity("members", mid, m.model_dump()):
+        return {"msg": f"Member {mid} updated successfully."}
     
-    if not found:
-        raise HTTPException(status_code=404, detail="Member not found")
-        
-    write_data("members", members)
-    log_audit(f"MEMBER UPDATED: {mid}")
-    return {"msg": "Member updated"}
+    raise HTTPException(status_code=404, detail="Member not found.")
 
 @app.delete("/{mid}")
 def delete_member(mid: str):
