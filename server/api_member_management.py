@@ -10,7 +10,6 @@ class Member(BaseModel):
     level: str
 
 @app.get("/")
-
 def get_members():
     return read_data("members")
 
@@ -23,6 +22,26 @@ def add_member(m: Member):
     write_data("members", members)
     log_audit(f"MEMBER ADDED: {m.id}")
     return {"msg": "Member added"}
+
+@app.put("/{mid}")
+def update_member(mid: str, m: Member):
+    members = read_data("members")
+    found = False
+    for i, member in enumerate(members):
+        if member['id'] == mid:
+            # Update while keeping the ID same (or allow update if payload has same ID)
+            if m.id != mid:
+                 raise HTTPException(status_code=400, detail="ID mismatch in body and URL")
+            members[i] = m.model_dump()
+            found = True
+            break
+    
+    if not found:
+        raise HTTPException(status_code=404, detail="Member not found")
+        
+    write_data("members", members)
+    log_audit(f"MEMBER UPDATED: {mid}")
+    return {"msg": "Member updated"}
 
 @app.delete("/{mid}")
 def delete_member(mid: str):
