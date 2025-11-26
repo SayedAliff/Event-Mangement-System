@@ -4,7 +4,6 @@ import sys
 URL = "http://127.0.0.1:8000/event"
 
 def get_input(prompt: str, type_func=str, required: bool = True):
-    """Helper for user input and basic type validation."""
     while True:
         try:
             value = input(prompt).strip()
@@ -71,7 +70,6 @@ def menu():
             
             print(f"Updating Event {eid}. Enter New Details:")
             
-
             new_name = get_input("New Name: ")
             new_fee = get_input("New Fee: ", float)
             new_capacity = get_input("New Capacity: ", int)

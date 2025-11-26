@@ -25,10 +25,8 @@ def add_member(m: Member):
 
 @app.put("/{mid}")
 def update_member(mid: str, m: Member):
-
     if m.id != mid:
         raise HTTPException(status_code=400, detail="ID mismatch in body and URL")
-
 
     if update_entity("members", mid, m.model_dump()):
         return {"msg": f"Member {mid} updated successfully."}
@@ -37,6 +35,10 @@ def update_member(mid: str, m: Member):
 
 @app.delete("/{mid}")
 def delete_member(mid: str):
+    regs = read_data("registrations")
+    if any(r['member_id'] == mid for r in regs):
+        raise HTTPException(status_code=400, detail="Cannot delete member with active registrations.")
+
     members = read_data("members")
     new_list = [m for m in members if m['id'] != mid]
     if len(members) == len(new_list):

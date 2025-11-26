@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from .storage import read_data, write_data, log_audit, update_entity
 
 app = FastAPI()
@@ -7,8 +7,8 @@ app = FastAPI()
 class Event(BaseModel):
     id: str
     name: str
-    fee: float
-    capacity: int
+    fee: float = Field(..., ge=0)
+    capacity: int = Field(..., gt=0)
 
 @app.get("/")
 def get_events():
