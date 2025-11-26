@@ -1,7 +1,7 @@
 import json
 import os
 from datetime import datetime
-from typing import List, Dict, Any, Optional
+from typing import Dict, Any
 
 DATA_DIR = "data"
 FILES = {
@@ -66,21 +66,3 @@ def update_entity(entity_type: str, entity_id: str, new_data: Dict[str, Any]) ->
         log_audit(f"{entity_type.upper()} UPDATED: ID {entity_id}")
         return True
     return False
-
-def get_next_id(filepath: str, prefix: str) -> str:
-    records = read_data(filepath)
-    if not records:
-        return f"{prefix}001"
-    
-    max_num = 0
-    id_key = 'reg_id' if prefix == 'R-' else 'id'
-    
-    for r in records:
-        current_id = r.get(id_key, "")
-        if current_id.startswith(prefix) and current_id[len(prefix):].isdigit():
-            try:
-                max_num = max(max_num, int(current_id[len(prefix):]))
-            except ValueError:
-                continue
-    
-    return f"{prefix}{(max_num + 1):03d}"

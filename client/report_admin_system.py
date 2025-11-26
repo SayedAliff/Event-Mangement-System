@@ -28,12 +28,8 @@ def menu():
         if c == '0': break
         
         if c == '1':
-            filter_t = input("Filter (all/value): ")
-            val = None
-            if filter_t != "all": val = input("Search Value: ")
-            
             try:
-                res = requests.post(URL + "/audit", json={"filter_type": filter_t, "value": val})
+                res = requests.get(URL + "/audit")
                 for line in res.json()['logs']:
                     print(line.strip())
             except: print("Error")

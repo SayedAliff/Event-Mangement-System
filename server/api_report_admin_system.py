@@ -12,11 +12,6 @@ class Login(BaseModel):
 class ReportRequest(BaseModel):
     event_id: str
 
-class AuditFilter(BaseModel):
-    filter_type: str
-    value: str = None
-
-
 @app.post("/login")
 def login(creds: Login):
     admin = get_admin_creds()
@@ -40,15 +35,11 @@ def get_report(req: ReportRequest):
         "capacity": event['capacity']  
     }
 
-@app.post("/audit")
-def view_audit(filter_data: AuditFilter):
+@app.get("/audit")
+def view_audit():
     if not os.path.exists("data/audit.log"): return {"logs": []}
     
     with open("data/audit.log", 'r') as f:
         lines = f.readlines()
         
-    if filter_data.filter_type == "all":
-        return {"logs": lines}
-        
-    filtered = [line for line in lines if filter_data.value.lower() in line.lower()]
-    return {"logs": filtered}
+    return {"logs": lines}
