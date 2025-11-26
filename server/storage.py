@@ -53,7 +53,7 @@ def update_entity(entity_type: str, entity_id: str, new_data: Dict[str, Any]) ->
     
     for i, item in enumerate(items):
         if item.get('id') == entity_id:
-            # Ensure the ID is not accidentally overwritten
+           
             if 'id' in new_data:
                 del new_data['id'] 
             
@@ -67,7 +67,7 @@ def update_entity(entity_type: str, entity_id: str, new_data: Dict[str, Any]) ->
         return True
     return False
 
-# --- Helper functions for APIs ---
+
 def get_next_id(filepath: str, prefix: str) -> str:
     records = read_data(filepath)
     if not records:
