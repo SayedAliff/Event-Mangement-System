@@ -1,4 +1,4 @@
 {"id": "R-1", "member_id": "M-01", "event_id": "E-01"}
-{"id": "R-2", "member_id": "M-02", "event_id": "E-01"}
-{"id": "R-3", "member_id": "F-01", "event_id": "E-01"}
+{"id": "R-2", "member_id": "F-01", "event_id": "E-01"}
+{"id": "R-3", "member_id": "M-02", "event_id": "E-01"}
 {"id": "R-4", "member_id": "M-03", "event_id": "E-01"}
