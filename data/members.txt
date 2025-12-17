@@ -1,4 +1,2 @@
-{"id": "M-01", "name": "Alif", "phone": "01784472253"}
-{"id": "M-02", "name": "Sajid", "phone": "0178787878"}
-{"id": "F-01", "name": "eva", "phone": "0199999999"}
-{"id": "M-03", "name": "Saffat", "phone": "0189888889"}
+M-01,Sayed Nafisur Rahman Alif,0199999
+M-2,sajid,01999

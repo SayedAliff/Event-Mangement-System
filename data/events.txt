@@ -1,1 +1,1 @@
-{"id": "E-01", "name": "Project Defence", "fee": 20000.0, "capacity": 4}
+E-01,Project Defence,4000.0,5
